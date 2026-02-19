@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "rest_framework",
 
     # Local
-    "apps",
+    "apps.users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -139,3 +139,5 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
     "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.SessionAuthentication"],
 }
+
+AUTH_USER_MODEL = "users.User"
