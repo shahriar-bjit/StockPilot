@@ -34,11 +34,3 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user) 
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        low_stock = self.request.query_params.get('low_stock')
-        
-        if low_stock and low_stock.lower() == 'true':
-            queryset = queryset.filter(stock_on_hand__lte=models.F('reorder_level'))
-        return queryset
