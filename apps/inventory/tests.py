@@ -73,4 +73,4 @@ class ProductAPITests(APITestCase):
         self.client.force_authenticate(user=self.auditor_user)
         response = self.client.get("/api/products/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.data), 1)
+        self.assertEqual(len(response.data["results"]), 1)
